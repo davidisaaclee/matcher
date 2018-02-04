@@ -67,21 +67,21 @@ integralMidpoint(5); // => 3
 
 ```javascript
 const signMatcher = createMatcher(
-	registerCase => [registerCase('positive'), registerCase('negative'), registerCase()],
+	registerCase => [registerCase('positive'), registerCase('negative'), registerCase('zero')],
 	cases => n => {
 		if (n > 0) {
 			return cases('positive');
-		} else if (n < 0 ) {
+		} else if (n < 0) {
 			return cases('negative');
 		} else {
-			return cases();
+			return cases('zero');
 		}
 	});
 
 const absoluteValue = signMatcher(cases => ({
 	[cases('positive')]: n => n,
 	[cases('negative')]: n => -n,
-	[cases()]: n => null,
+	[cases('zero')]: n => null,
 	// [cases('undefined case')]: n => null, // would throw an error when absoluteValue is created
 }));
 ```

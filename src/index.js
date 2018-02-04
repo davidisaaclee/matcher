@@ -80,6 +80,7 @@ export function createMatcher(registerCases, makeIndexer) {
 			const matchedCase = indexer(value);
 
 			if (!(matchedCase in caseDispatcher)) {
+				// TODO: I'm not certain how this would ever be triggered.
 				throw new Error(`Could not find case in registered cases: ${matchedCase}`);
 			} else {
 				return caseDispatcher[matchedCase](value, ...args);
