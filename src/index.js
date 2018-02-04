@@ -27,12 +27,11 @@ where RegisterCase ::= CaseName -> ()
       CaseName ::= String
       Case ::= <opaque>
  */
-export function createMatcher(registerCases, makeIndexer) {
+export function createMatcher(caseNameList, makeIndexer) {
 	// -- Register case names.
 	
 	// registeredCaseNames :: { CaseName -> Case }
-	const registeredCaseNames = {};
-	registerCases(caseName => registeredCaseNames[caseName] = caseName);
+	const registeredCaseNames = caseNameList.reduce((acc, elm) => ({ ...acc, [elm]: elm }), {});
 
 	// retrieveCaseSafely :: { CaseName -> Case } throws
 	const retrieveCaseSafely = caseName => {
