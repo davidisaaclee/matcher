@@ -28,6 +28,8 @@ where RegisterCase ::= CaseName -> ()
       Case ::= <opaque>
  */
 export function createMatcher(registerCases, makeIndexer) {
+	// -- Register case names.
+	
 	// registeredCaseNames :: { CaseName -> Case }
 	const registeredCaseNames = {};
 	registerCases(caseName => registeredCaseNames[caseName] = caseName);
@@ -41,15 +43,19 @@ export function createMatcher(registerCases, makeIndexer) {
 		}
 	};
 
+	// -- Make an indexer to index inputs into their cases. 
+	// -- (This will be used inside the generated functions.)
+
 	// indexer :: Indexer
 	const indexer = makeIndexer(retrieveCaseSafely);
 
 	return makeCaseDispatcher => {
+		// -- When a function is generated, resolve the referenced cases in the dispatcher object.
+
 		// caseDispatcher :: CaseDispatcher
 		const caseDispatcher = makeCaseDispatcher(retrieveCaseSafely);
 
-		// Check that caseDispatcher handles all registered cases, and doesn't 
-		// contain any invalid cases.
+		// -- Check that caseDispatcher handles all registered cases, and doesn't contain any invalid cases.
 		
 		// extraneousCases :: [Case]
 		const extraneousCases =
@@ -67,7 +73,9 @@ export function createMatcher(registerCases, makeIndexer) {
 			throw new Error(`Case-matching dispatcher contains the following unregistered cases: ${extraneousCases}`);
 		}
 
-
+		// -- Return a function that matches its input using the `indexer`, and dispatches
+		// -- to the relevant branch of the `caseDispatcher`.
+		
 		return function (value, ...args) {
 			const matchedCase = indexer(value);
 
