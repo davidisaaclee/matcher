@@ -1,0 +1,31 @@
+{
+	"name": "matcher",
+	"version": "1.0.0",
+	"main": "./dist/index.js",
+	"module": "./src/index.js",
+	"author": "David Lee <david.isaac.lee@gmail.com>",
+	"license": "MIT",
+	"files": [
+		"dist/"
+	],
+	"scripts": {
+		"build": "babel src --out-dir dist",
+		"prepare": "npm run build"
+	},
+	"devDependencies": {
+		"babel-cli": "^6.26.0",
+		"babel-preset-env": "^1.6.1"
+	},
+	"babel": {
+		"presets": [
+			[
+				"env",
+				{
+					"targets": {
+						"node": "current"
+					}
+				}
+			]
+		]
+	}
+}
