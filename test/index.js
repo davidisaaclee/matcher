@@ -15,10 +15,7 @@ const approximatelyEqual = (a, b, tolerance) => Math.abs(a - b) < tolerance;
 
 test('even/odd example from readme works', t => {
 	const evenOddMatcher = createMatcher(
-		registerCase => {
-			registerCase('even');
-			registerCase('odd');
-		},
+		['even', 'odd'],
 		cases => integer => {
 			if (integer % 2 === 0) {
 				return cases('even');
@@ -38,7 +35,7 @@ test('even/odd example from readme works', t => {
 
 test('sign example from readme works', t => {
 	const signMatcher = createMatcher(
-		registerCase => [registerCase('positive'), registerCase('negative'), registerCase('zero')],
+		['positive', 'negative', 'zero'],
 		cases => n => {
 			if (n > 0) {
 				return cases('positive');
@@ -89,7 +86,7 @@ test('shape example from readme works', t => {
 	});
 
 	const shapeTypeMatcher = createMatcher(
-		registerCase => Object.values(shapeTypes).forEach(registerCase),
+		Object.values(shapeTypes),
 		cases => shape => shape.type);
 
 	const area = shapeTypeMatcher(cases => ({
@@ -103,7 +100,7 @@ test('shape example from readme works', t => {
 
 test('extraneous cases in indexer should throw an error when indexing', t => {
 	const matcher = createMatcher(
-		registerCase => ['a', 'b'].forEach(registerCase),
+		['a', 'b'],
 		cases => x => {
 			return cases('unregistered');
 		});
@@ -123,7 +120,7 @@ test('extraneous cases in indexer should throw an error when indexing', t => {
 
 test('missing cases in dispatcher should throw an error at function creation', t => {
 	const matcher = createMatcher(
-		registerCase => ['a', 'b', 'c'].forEach(registerCase),
+		['a', 'b', 'c'],
 		cases => x => null);
 
 	t.throws(
@@ -138,7 +135,7 @@ test('missing cases in dispatcher should throw an error at function creation', t
 
 test('missing cases in dispatcher should throw an error at function creation', t => {
 	const matcher = createMatcher(
-		registerCase => ['a', 'b', 'c'].forEach(registerCase),
+		['a', 'b', 'c'],
 		cases => x => null);
 
 	t.throws(
@@ -153,7 +150,7 @@ test('missing cases in dispatcher should throw an error at function creation', t
 
 test('functions should preserve their arity', t => {
 	const signMatcher = createMatcher(
-		registerCase => [registerCase('positive'), registerCase('negative'), registerCase('zero')],
+		['positive', 'negative', 'zero'],
 		cases => n => {
 			if (n > 0) {
 				return cases('positive');
@@ -177,7 +174,7 @@ test('functions should preserve their arity', t => {
 
 test('curried functions should preserve their structure', t => {
 	const signMatcher = createMatcher(
-		registerCase => [registerCase('positive'), registerCase('negative'), registerCase('zero')],
+		['positive', 'negative', 'zero'],
 		cases => n => {
 			if (n > 0) {
 				return cases('positive');
@@ -212,7 +209,7 @@ test('curried functions should preserve their structure', t => {
  */
 test('functions created with R.curry should preserve their structure', t => {
 	const signMatcher = createMatcher(
-		registerCase => [registerCase('positive'), registerCase('negative'), registerCase('zero')],
+		['positive', 'negative', 'zero'],
 		cases => n => {
 			if (n > 0) {
 				return cases('positive');
