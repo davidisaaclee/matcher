@@ -28,10 +28,7 @@ property names.)
 ```javascript
 const evenOddMatcher = createMatcher(
 	// Register our two cases by name.
-	registerCase => {
-		registerCase('even');
-		registerCase('odd');
-	},
+	['even', 'odd'],
 	// Define how to map an integer into the even or odd cases.
 	// A `cases` function is provided to us to use here. We can call it with our
 	// case names (the strings "even" or "odd") to reference the cases we just defined.
@@ -67,7 +64,7 @@ integralMidpoint(5); // => 3
 
 ```javascript
 const signMatcher = createMatcher(
-	registerCase => [registerCase('positive'), registerCase('negative'), registerCase('zero')],
+	['positive', 'negative', 'zero'],
 	cases => n => {
 		if (n > 0) {
 			return cases('positive');
@@ -81,7 +78,7 @@ const signMatcher = createMatcher(
 const absoluteValue = signMatcher(cases => ({
 	[cases('positive')]: n => n,
 	[cases('negative')]: n => -n,
-	[cases('zero')]: n => null,
+	[cases('zero')]: n => 0,
 	// [cases('undefined case')]: n => null, // would throw an error when absoluteValue is created
 }));
 ```
@@ -106,7 +103,7 @@ const makeCircle = (radius) => ({
 });
 
 const shapeTypeMatcher = createMatcher(
-	registerCase => Object.values(shapeTypes).forEach(registerCase),
+	Object.values(shapeTypes),
 	cases => shape => shape.type);
 
 const area = shapeTypeMatcher(cases => ({

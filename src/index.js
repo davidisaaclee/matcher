@@ -1,26 +1,28 @@
 /*
 		const signMatcher = createMatcher(
-			registerCase => [registerCase('positive'), registerCase('negative'), registerCase()],
+			// list of possible case names
+			['positive', 'negative', 'zero'],
+			// indexer mapping input to cases
 			cases => n => {
 				if (n > 0) {
 					return cases('positive');
 				} else if (n < 0 ) {
 					return cases('negative');
 				} else {
-					return cases();
+					return cases('zero');
 				}
 			});
 
 		const absoluteValue = signMatcher(cases => ({
 			[cases('positive')]: n => n,
 			[cases('negative')]: n => -n,
-			[cases()]: n => null,
+			[cases('zero')]: n => null,
 			// [cases('undefined case')]: n => null, // would throw an error when `absoluteValue` is created
 		}));
 
 
-createMatcher :: (RegisterCase, CaseEnvironment -> Indexer) -> (CaseEnvironment -> CaseDispatcher) -> a -> b
-where RegisterCase ::= CaseName -> ()
+createMatcher :: ([CaseName], CaseEnvironment -> Indexer) -> (CaseEnvironment -> CaseDispatcher) -> a -> b
+where CaseName ::= String
       CaseEnvironment ::= CaseName -> Case
       Indexer ::= a -> Case
       CaseDispatcher ::= { Case -> (a -> b) }
