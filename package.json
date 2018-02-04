@@ -14,16 +14,20 @@
 		"test": "ava"
 	},
 	"devDependencies": {
+		"@babel/cli": "^7.0.0-beta.39",
+		"@babel/core": "^7.0.0-beta.39",
+		"@babel/plugin-syntax-object-rest-spread": "^7.0.0-beta.39",
+		"@babel/polyfill": "^7.0.0-beta.39",
+		"@babel/preset-env": "^7.0.0-beta.39",
+		"@babel/register": "^7.0.0-beta.39",
 		"ava": "^0.25.0",
-		"babel-cli": "^6.26.0",
-		"babel-preset-env": "^1.6.1",
-		"babel-register": "^6.26.0",
 		"ramda": "^0.25.0"
 	},
 	"babel": {
+		"plugins": ["@babel/plugin-syntax-object-rest-spread"],
 		"presets": [
 			[
-				"env",
+				"@babel/preset-env",
 				{
 					"targets": {
 						"node": "current"
@@ -35,7 +39,7 @@
 	"dependencies": {},
 	"ava": {
 		"require": [
-			"babel-register"
+			"@babel/register"
 		]
 	}
 }
