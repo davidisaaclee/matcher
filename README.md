@@ -1,23 +1,23 @@
 # matcher - pattern matching function generator
 
-good for:
-- **defining methods for enum-like types that switch their behavior based on their 
+Good for:
+- **Defining methods for enum-like types that switch their behavior based on their 
 input.**
-- **getting something like type safety** by being notified of functions which
+- **Getting something like type safety** by being notified of functions which
 omit registered cases or include invalid cases for their input.
-- **referring to the names of your enumeration's cases without worrying about typos.**
-- **defining functions that switch on a custom partitioning of its input set.**
-define one matcher to partition numbers into even/odd; another to partition
+- **Referring to the names of your enumeration's cases without worrying about typos.**
+- **Defining functions that switch on a custom partitioning of its input set.**
+Define one matcher to partition numbers into even/odd; another to partition
 into positive/nonpositive; another to partition into the temperature ranges
 for the different phases of water in degrees celsius...
 
-probably not good for:
-- **quickly making throwaway anonymous functions.** creating pattern-matching functions
+Probably not good for:
+- **Quickly making throwaway anonymous functions.** Creating pattern-matching functions
 with this library is optimized for giving good error messages at function definition, __not__
 for creating functions as quickly as possible.
-- **environments without ES6's [computed property names](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer#Computed_property_names).**
-this library relies on this feature to make it simple to map between a dynamic case name
-and the relevant conditional branch. (it's still totally possible to do this without computed 
+- **Environments without ES6's [computed property names](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer#Computed_property_names).**
+This library relies on this feature to make it simple to map between a dynamic case name
+and the relevant conditional branch. (It's still totally possible to do this without computed 
 property names.)
 
 
@@ -116,18 +116,18 @@ const area = shapeTypeMatcher(cases => ({
 ```
 		
 ## Todo
-- allow types other than String to be case names
-- use to to define methods for ES6 classes
+- Allow types other than String to be case names
+- Use to to define methods for ES6 classes
 
 ## Similar projects
-- [**z-pattern-matching**](https://github.com/z-pattern-matching/z) - this is a
+- [**z-pattern-matching**](https://github.com/z-pattern-matching/z) - This is a
 really neat implementation of pattern matching that relies on reflection to make
-function definition super lightweight. while this is cool, I didn't like how
+function definition super lightweight. While this is cool, I didn't like how
 "magical" it felt. I also wanted to easily match my custom types, instead of
 repeatedly defining how I wanted to partition the input into its cases.
-- [**sparkler**](https://github.com/natefaubion/sparkler) - a pattern-matching engine
-powered by sweet.js macros. this seems well-made, and has a lot of nice features.
+- [**sparkler**](https://github.com/natefaubion/sparkler) - A pattern-matching engine
+powered by sweet.js macros. This seems well-made, and has a lot of nice features.
 sweet.js seems sweet, but I wanted a very vanilla solution to this very vanilla problem.
 - [**official ECMAScript pattern matching proposal**](https://github.com/tc39/proposal-pattern-matching) -
-in stage 0. hope to see this happen someday...
+In stage 0. Hope to see this happen someday...
 
