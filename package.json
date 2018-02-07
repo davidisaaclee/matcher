@@ -1,9 +1,9 @@
 {
-	"name": "matcher",
+	"name": "@davidisaaclee/matcher",
 	"version": "1.0.0",
 	"main": "./lib/index.js",
 	"module": "./es/index.js",
-	"author": "David Lee <david.isaac.lee@gmail.com>",
+	"author": "David Lee <david@david-lee.net>",
 	"license": "MIT",
 	"files": [
 		"es/",
