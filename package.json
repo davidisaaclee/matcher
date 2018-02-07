@@ -8,12 +8,14 @@
 	"files": [
 		"es/",
 		"src/",
-		"lib/"
+		"lib/",
+		"dist/"
 	],
 	"scripts": {
+		"build:umd": "cross-env BABEL_ENV=umd babel src --out-dir dist",
 		"build:commonjs": "cross-env BABEL_ENV=commonjs babel src --out-dir lib",
 		"build:es": "cross-env BABEL_ENV=es babel src --out-dir es",
-		"build": "npm run build:commonjs && npm run build:es",
+		"build": "npm run build:commonjs && npm run build:umd && npm run build:es",
 		"prepare": "npm run build",
 		"test": "ava"
 	},

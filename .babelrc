@@ -19,9 +19,19 @@
 			"presets": [
 				[
 					"@babel/preset-env",
-					{
-						"modules": "commonjs"
-					}
+				{
+					"modules": "commonjs"
+				}
+				]
+			]
+		},	
+		"umd": {
+			"presets": [
+				[
+					"@babel/preset-env",
+				{
+					"modules": "umd"
+				}
 				]
 			]
 		}
