@@ -33,7 +33,7 @@ import createMatcher from '@davidisaaclee/matcher';
 const createMatcher = require('@davidisaaclee/matcher').default;
 ```
 
-2. **Create a pattern-matching generator by calling `createMatcher`.** This call will define a set of __cases__, which are names for the different "slots" that your input can map to. In an even/odd matcher, these cases would be named "even" and "odd". We'll also need to provide a way of partitioning an input into those cases. In an even/odd matcher, this would be a function mapping a number to either even or odd.
+2. **Create a pattern-matching generator by calling `createMatcher`.** In this call, we'll need to provide a set of __case names__, which are string indices for the different "slots" that your input can map to. In an even/odd matcher, the cases would be named "even" and "odd". We'll also need to provide a way of partitioning an input into those named cases. In an even/odd matcher, this would be a function mapping a number to either even or odd.
 
 ```javascript
 const evenOddMatcher = createMatcher(
