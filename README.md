@@ -23,11 +23,19 @@ property names.)
 
 ## Usage
 
-1. **Create a pattern-matching generator by calling `createMatcher`.** This call will define a set of __cases__, which are names for the different "slots" that your input can map to. In an even/odd matcher, these cases would be named "even" and "odd". We'll also need to provide a way of partitioning an input into those cases. In an even/odd matcher, this would be a function mapping a number to either even or odd.
+1. **Import `createMatcher` from this package.** 
 
 ```javascript
+// ES6 module
 import createMatcher from '@davidisaaclee/matcher';
 
+// NodeJS - note the required `.default`
+const createMatcher = require('@davidisaaclee/matcher').default;
+```
+
+2. **Create a pattern-matching generator by calling `createMatcher`.** This call will define a set of __cases__, which are names for the different "slots" that your input can map to. In an even/odd matcher, these cases would be named "even" and "odd". We'll also need to provide a way of partitioning an input into those cases. In an even/odd matcher, this would be a function mapping a number to either even or odd.
+
+```javascript
 const evenOddMatcher = createMatcher(
 	// Register our two cases by name.
 	['even', 'odd'],
@@ -44,7 +52,7 @@ const evenOddMatcher = createMatcher(
 	});
 ```
 	
-2. **Generate your function by invoking that generator with your pattern-matching behavior.**
+3. **Generate your function by invoking that generator with your pattern-matching behavior.**
 
 ```javascript
 // Here's a function that picks an integer near the midpoint between 0 and some endpoint.
@@ -55,7 +63,7 @@ const integralMidpoint = evenOddMatcher(cases => ({
 }));
 ```
 
-3. **Use that function.**
+4. **Use that function.**
 
 ```javascript
 integralMidpoint(4); // => 2
