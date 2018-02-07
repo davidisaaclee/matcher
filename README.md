@@ -26,6 +26,8 @@ property names.)
 1. **Create a pattern-matching generator by calling `createMatcher`.** This call will define a set of __cases__, which are names for the different "slots" that your input can map to. In an even/odd matcher, these cases would be named "even" and "odd". We'll also need to provide a way of partitioning an input into those cases. In an even/odd matcher, this would be a function mapping a number to either even or odd.
 
 ```javascript
+import createMatcher from '@davidisaaclee/matcher';
+
 const evenOddMatcher = createMatcher(
 	// Register our two cases by name.
 	['even', 'odd'],

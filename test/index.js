@@ -1,5 +1,5 @@
 import test from 'ava';
-import { createMatcher } from '../src';
+import createMatcher from '../src';
 
 // Import `R.curry` for testing overloaded curried functions.
 // http://ramdajs.com/docs/#curry

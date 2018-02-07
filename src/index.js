@@ -29,7 +29,7 @@ where CaseName ::= String
       CaseName ::= String
       Case ::= <opaque>
  */
-export function createMatcher(caseNameList, makeIndexer) {
+export default function createMatcher(caseNameList, makeIndexer) {
 	// -- Register case names.
 	
 	// registeredCaseNames :: { CaseName -> Case }
