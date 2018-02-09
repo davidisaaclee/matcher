@@ -15,6 +15,11 @@
 		"lib/",
 		"dist/"
 	],
+	"keywords": [
+		"pattern",
+		"matching",
+		"match"
+	],
 	"scripts": {
 		"build:umd": "cross-env BABEL_ENV=umd babel src --out-dir dist",
 		"build:commonjs": "cross-env BABEL_ENV=commonjs babel src --out-dir lib",
