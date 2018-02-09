@@ -15,10 +15,6 @@ Probably not good for:
 - **Quickly making throwaway anonymous functions.** Creating pattern-matching functions
 with this library is optimized for giving good error messages at function definition, __not__
 for creating functions as quickly as possible.
-- **Environments without ES6's [computed property names](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer#Computed_property_names).**
-This library relies on this feature to make it simple to map between a dynamic case name
-and the relevant conditional branch. (It's still totally possible to do this without computed 
-property names.)
 
 
 ## Usage
