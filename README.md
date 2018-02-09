@@ -1,4 +1,6 @@
-# matcher - pattern matching function generator
+# matcher
+
+A tiny library for creating pattern matching functions over custom types in vanilla Javascript.
 
 Good for:
 - **Defining methods for enum-like types that switch their behavior based on their 
