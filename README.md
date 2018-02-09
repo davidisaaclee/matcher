@@ -121,10 +121,6 @@ const area = shapeTypeMatcher(cases => ({
 	[cases(shapeTypes.circle)]: (shape) => shape.radius * shape.radius * Math.PI,
 }));
 ```
-		
-## Todo
-- Allow types other than String to be case names
-- Use to to define methods for ES6 classes
 
 ## Similar projects
 - [**z-pattern-matching**](https://github.com/z-pattern-matching/z) - This is a
