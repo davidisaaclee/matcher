@@ -114,7 +114,7 @@ const makeCircle = (radius) => ({
 
 const shapeTypeMatcher = createMatcher(
 	Object.values(shapeTypes),
-	cases => shape => shape.type);
+	cases => shape => cases(shape.type));
 
 const area = shapeTypeMatcher(cases => ({
 	[cases(shapeTypes.square)]: (shape) => shape.sideLength * shape.sideLength,
