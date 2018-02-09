@@ -19,7 +19,14 @@ for creating functions as quickly as possible.
 
 ## Usage
 
-1. **Import `createMatcher` from this package.** 
+1. **Install this package.** This package is listed on npm as `@davidisaaclee/matcher`. 
+To install with npm, run the following command:
+
+```
+$ npm install @davidisaaclee/matcher
+```
+
+2. **Import `createMatcher` from this package.** 
 
 ```javascript
 // ES6 module
@@ -29,7 +36,7 @@ import createMatcher from '@davidisaaclee/matcher';
 const createMatcher = require('@davidisaaclee/matcher').default;
 ```
 
-2. **Create a pattern-matching generator by calling `createMatcher`.** In this call, we'll need to provide a set of __case names__, which are string indices for the different "slots" that your input can map to. In an even/odd matcher, the cases would be named "even" and "odd". We'll also need to provide a way of partitioning an input into those named cases. In an even/odd matcher, this would be a function mapping a number to either even or odd.
+3. **Create a pattern-matching generator by calling `createMatcher`.** In this call, we'll need to provide a set of __case names__, which are string indices for the different "slots" that your input can map to. In an even/odd matcher, the cases would be named "even" and "odd". We'll also need to provide a way of partitioning an input into those named cases. In an even/odd matcher, this would be a function mapping a number to either even or odd.
 
 ```javascript
 const evenOddMatcher = createMatcher(
@@ -48,7 +55,7 @@ const evenOddMatcher = createMatcher(
 	});
 ```
 	
-3. **Generate your function by invoking that generator with your pattern-matching behavior.**
+4. **Generate your function by invoking that generator with your pattern-matching behavior.**
 
 ```javascript
 // Here's a function that picks an integer near the midpoint between 0 and some endpoint.
@@ -59,7 +66,7 @@ const integralMidpoint = evenOddMatcher(cases => ({
 }));
 ```
 
-4. **Use that function.**
+5. **Use that function.**
 
 ```javascript
 integralMidpoint(4); // => 2
