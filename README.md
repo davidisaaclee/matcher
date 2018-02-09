@@ -118,6 +118,38 @@ const area = shapeTypeMatcher(cases => ({
 }));
 ```
 
+## Example: Creating a matcher in ES5
+
+Here's the same even-odd matcher and generated `integralMidpoint` function as defined in **Usage**, 
+written using ES5.
+
+```javascript
+var evenOddMatcher = createMatcher(
+	['even', 'odd'],
+	function (cases) {
+		return function (integer) {
+			if (integer % 2 === 0) {
+				return cases('even');
+			} else {
+				return cases('odd');
+			}
+		};
+	});
+
+var integralMidpoint = evenOddMatcher(function (cases) {
+	var indexer = {};
+
+	indexer[cases('even')] = function (number) {
+		return number / 2;
+	};
+	indexer[cases('odd')] = function (number) {
+		return (number + 1) / 2;
+	};
+
+	return indexer;
+});
+```
+
 ## Similar projects
 - [**z-pattern-matching**](https://github.com/z-pattern-matching/z) - This is a
 really neat implementation of pattern matching that relies on reflection to make
