@@ -1,14 +1,14 @@
 {
 	"name": "@davidisaaclee/matcher",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"main": "./lib/index.js",
 	"module": "./es/index.js",
 	"author": "David Lee <david@david-lee.net>",
 	"license": "MIT",
-	"repository" : {
-	 	"type" : "git", 
-		"url" : "https://github.com/davidisaaclee/matcher"
-	},	
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/davidisaaclee/matcher"
+	},
 	"files": [
 		"es/",
 		"src/",
