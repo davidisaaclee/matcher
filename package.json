@@ -5,6 +5,10 @@
 	"module": "./es/index.js",
 	"author": "David Lee <david@david-lee.net>",
 	"license": "MIT",
+	"repository" : {
+	 	"type" : "git", 
+		"url" : "https://github.com/davidisaaclee/matcher"
+	},	
 	"files": [
 		"es/",
 		"src/",
