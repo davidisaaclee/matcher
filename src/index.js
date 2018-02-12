@@ -32,6 +32,11 @@ where CaseName ::= String
 export default function createMatcher(caseNameList, makeIndexer) {
 	// -- Register case names.
 	
+	// NOTE: `Case` is meant to be an opaque type only referred to by its `CaseName`.
+	// In this implementation, the `Case` is equivalent to the `CaseName` for efficiency
+	// and ease of implementation.
+	// This should probably be changed to avoid confusion.
+	
 	// registeredCaseNames :: { CaseName -> Case }
 	const registeredCaseNames = caseNameList.reduce((acc, elm) => ({ ...acc, [elm]: elm }), {});
 
