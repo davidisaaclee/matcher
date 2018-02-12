@@ -9,6 +9,7 @@ const errorMessages = {
 	unregisteredCasesInDispatcher: (unregisteredCases) => `Case-matching dispatcher contains the following unregistered cases: ${unregisteredCases}`,
 	missingCasesInDispatcher: (missingCases) => `Case-matching dispatcher is missing the following cases: ${missingCases}`,
 	referencedUnregisteredCaseInIndexer: (caseName) => `Referenced undefined case name: ${caseName}`,
+	returnedNoncaseValueInIndex: (noncaseValue) => `Could not find case in registered cases: ${noncaseValue}`,
 };
 
 const approximatelyEqual = (a, b, tolerance) => Math.abs(a - b) < tolerance;
@@ -231,4 +232,39 @@ test('functions created with R.curry should preserve their structure', t => {
 	t.is(absoluteValueThenMultiply(5, 2)(4), 40);
 	t.is(absoluteValueThenMultiply(5)(2)(4), 40);
 });
+
+	 test('not returning a non-case value from the indexer should throw an error', t => {
+		 const tfMatcher = createMatcher(
+			 ['true', 'false'],
+			 cases => b => b ? cases('true') : -1);
+
+		 const printBool = tfMatcher(cases => ({
+			 [cases('true')]: _ => 'True',
+			 [cases('false')]: _ => 'False',
+		 }));
+
+		 t.throws(
+			 () => printBool(false),
+			 errorMessages.returnedNoncaseValueInIndex(-1));
+
+		 const signMatcher = createMatcher(
+			 ['positive', 'negative'],
+			 cases => n => {
+				 if (n > 0) {
+					 return cases('positive');
+				 } else if (n < 0) {
+					 return cases('negative');
+				 }
+				 // If value is 0, will fall through without returning a value.
+			 });
+
+		 const absoluteValue = signMatcher(cases => ({
+			 [cases('positive')]: n => n,
+			 [cases('negative')]: n => -n,
+		 }));
+
+		 t.throws(
+			 () => absoluteValue(0),
+			 errorMessages.returnedNoncaseValueInIndex(undefined));
+	 });
 

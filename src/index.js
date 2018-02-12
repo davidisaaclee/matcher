@@ -89,7 +89,7 @@ export default function createMatcher(caseNameList, makeIndexer) {
 			const matchedCase = indexer(value);
 
 			if (!(matchedCase in caseDispatcher)) {
-				// TODO: I'm not certain how this would ever be triggered.
+				// Indexer returned an unregistered case.
 				throw new Error(`Could not find case in registered cases: ${matchedCase}`);
 			} else {
 				return caseDispatcher[matchedCase](value, ...args);
