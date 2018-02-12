@@ -17,7 +17,9 @@ Probably not good for:
 - **Quickly making throwaway anonymous functions.** Creating pattern-matching functions
 with this library is optimized for giving good error messages at function definition, __not__
 for creating functions as quickly as possible.
-
+- **Making functions for a type that can be added to externally.** Once a matcher is created,
+cases can't be added to it. If you want users of your code to be able to add new cases to your
+type, you should probably define behavior inside your type (e.g via class methods).
 
 ## Usage
 
