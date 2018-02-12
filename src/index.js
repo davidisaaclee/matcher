@@ -101,7 +101,7 @@ function setDifference(setA, setB) {
 				...differenceSet,
 
 				// If set B contains this element, remove it; else, keep it.
-				...(Object.values(setB).includes(elementToPotentiallyRemove) 
+				...(setB.includes(elementToPotentiallyRemove) 
 					? [] 
 					: [elementToPotentiallyRemove])
 			],
