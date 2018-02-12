@@ -56,7 +56,10 @@ export default function createMatcher(caseNameList, makeIndexer) {
 	const indexer = makeIndexer(retrieveCaseSafely);
 
 	return makeCaseDispatcher => {
-		// -- When a function is generated, resolve the referenced cases in the dispatcher object.
+		// -- When the user provides a case dispatcher function, it'll be in the form:
+		//     CaseEnvironment -> CaseDispatcher
+		// -- We already have a CaseEnvironment (`retrieveCaseSafely`), so we can use 
+		// -- that right away to make a `CaseDispatcher`.
 
 		// caseDispatcher :: CaseDispatcher
 		const caseDispatcher = makeCaseDispatcher(retrieveCaseSafely);
